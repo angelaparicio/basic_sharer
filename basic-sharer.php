@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-function basic_sharer_the_content($content) {
+add_filter( 'the_content', function($content){
 	
 	$permalink = get_permalink();
 	$title = urlencode(get_the_title());
@@ -34,8 +34,15 @@ function basic_sharer_the_content($content) {
 	}	
 	$share_links .= '</div>';
 	
-	
 	return $content.$share_links;
-}
+	
+});
 
-add_filter( 'the_content', 'basic_sharer_the_content' );
+
+add_action( 'admin_menu', function(){
+	add_submenu_page( 'tools.php', 'Basic Sharer Configuration', 'Basic Sharer', 'manage_options', 'basic_sharer_options', 'basic_sharer_render_options_page');
+});
+
+function basic_sharer_render_options_page(){
+	echo '<h1>Basic sharer options</h1>';
+}
