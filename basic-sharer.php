@@ -30,8 +30,14 @@ add_filter( 'the_content', function($content){
 			'visible' => get_option('basic_sharer_linkedin', true)			
 		),
 	);
+
+	$share_text   = get_option('basic_sharer_share_text', 'Share:');	
 	
 	$share_links  = '<div id="sharer_links">';
+	if ( !empty($share_text) ){
+		$share_links .= '<span class="share_links_text">'.$share_text.'</span>';
+	}	
+
 	foreach ( $links as $network_name => $link_info ){
 		if ($link_info['visible']) {
 			$share_links .= '<a href="'.$link_info['link'].'" class="external share_'.strtolower($network_name).'" target="_blank"><img style="display: inline" src="'.$link_info['logo'].'" alt="'.$network_name.'" /></a> ';
@@ -55,13 +61,15 @@ function basic_sharer_render_options_page(){
 		$basic_sharer_facebook = isset($_POST['basic_sharer_facebook']);
 		$basic_sharer_twitter  = isset($_POST['basic_sharer_twitter']);
 		$basic_sharer_linkedin = isset($_POST['basic_sharer_linkedin']);
-	
+		$basic_sharer_share_text = $_POST['basic_sharer_share_text'];
+		
 		update_option('basic_sharer_facebook', $basic_sharer_facebook);
 		update_option('basic_sharer_twitter', $basic_sharer_twitter);
-		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);		
+		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
+		update_option('basic_sharer_share_text', $basic_sharer_share_text);		
 
 		echo '<div class="updated"><p><strong>';
-		_e('Configuración modificada.');
+		_e('Updated');
 		echo '</strong></p></div>';
 	
 	}
@@ -69,7 +77,7 @@ function basic_sharer_render_options_page(){
 		$basic_sharer_facebook = get_option('basic_sharer_facebook', true);
 		$basic_sharer_twitter = get_option('basic_sharer_twitter', true);
 		$basic_sharer_linkedin = get_option('basic_sharer_linkedin', true);
-		
+		$basic_sharer_share_text = get_option('basic_sharer_share_text', 'Share:');
 	}
 	
 	include('options_page.php');
