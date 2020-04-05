@@ -18,6 +18,9 @@ The plugin will add links for share on Twitter, Facebook and Linkedin
 
 == Changelog ==
 
+= 0.3 = 
+* Added share text as config option
+
 = 0.2 =
 * Configuration page
 
