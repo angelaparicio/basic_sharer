@@ -3,10 +3,19 @@
 Plugin Name: Basic Sharer
 Description: Plugin muy simple para añadir enlaces de compartir
 Author: Angel Aparicio
-Version: 0.1
+Author URI: https://angelaparicio.dev
+Version: 0.5
+Text Domain: basic_sharer
+Domain Path: /languages
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
+
+function basic_sharer_load_plugin_textdomain() {
+	load_plugin_textdomain( 'basic_sharer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'basic_sharer_load_plugin_textdomain' ); 
+
 
 add_filter( 'the_content', function($content){
 	
@@ -30,13 +39,9 @@ add_filter( 'the_content', function($content){
 			'visible' => get_option('basic_sharer_linkedin', true)			
 		),
 	);
-
-	$share_text   = get_option('basic_sharer_share_text', 'Share:');	
 	
 	$share_links  = '<div id="sharer_links">';
-	if ( !empty($share_text) ){
-		$share_links .= '<span class="share_links_text">'.$share_text.'</span>';
-	}	
+	$share_links .= '<span class="share_links_text">'.__('Share', 'basic_sharer').': </span>';
 
 	foreach ( $links as $network_name => $link_info ){
 		if ($link_info['visible']) {
@@ -51,7 +56,7 @@ add_filter( 'the_content', function($content){
 
 
 add_action( 'admin_menu', function(){
-	add_submenu_page( 'tools.php', 'Basic Sharer Options', 'Basic Sharer', 'manage_options', 'basic_sharer_options', 'basic_sharer_render_options_page');
+	add_submenu_page( 'options-general.php', 'Basic Sharer Options', 'Basic Sharer', 'manage_options', 'basic_sharer_options', 'basic_sharer_render_options_page');
 });
 
 function basic_sharer_render_options_page(){
@@ -61,12 +66,10 @@ function basic_sharer_render_options_page(){
 		$basic_sharer_facebook = isset($_POST['basic_sharer_facebook']);
 		$basic_sharer_twitter  = isset($_POST['basic_sharer_twitter']);
 		$basic_sharer_linkedin = isset($_POST['basic_sharer_linkedin']);
-		$basic_sharer_share_text = $_POST['basic_sharer_share_text'];
 		
 		update_option('basic_sharer_facebook', $basic_sharer_facebook);
 		update_option('basic_sharer_twitter', $basic_sharer_twitter);
 		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
-		update_option('basic_sharer_share_text', $basic_sharer_share_text);		
 
 		echo '<div class="updated"><p><strong>';
 		_e('Updated');
@@ -77,7 +80,6 @@ function basic_sharer_render_options_page(){
 		$basic_sharer_facebook = get_option('basic_sharer_facebook', true);
 		$basic_sharer_twitter = get_option('basic_sharer_twitter', true);
 		$basic_sharer_linkedin = get_option('basic_sharer_linkedin', true);
-		$basic_sharer_share_text = get_option('basic_sharer_share_text', 'Share:');
 	}
 	
 	include('options_page.php');

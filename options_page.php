@@ -26,16 +26,6 @@
 					<input type="checkbox" id="basic_sharer_linkedin" name="basic_sharer_linkedin" <?php if ($basic_sharer_linkedin) echo 'checked' ?> />
        			</span>
        		</div>
-
-		<h3><?php echo __( 'Other options' ) ?></h3>
-			
-			<div class="inline-edit-col">
-       			<label for="basic_sharer_share_text" class="title">Text:</label>
-       		    <span class="input-text-wrap">
-					<input type="text" id="basic_sharer_share_text" name="basic_sharer_share_text" value="<?php echo $basic_sharer_share_text; ?>" />
-       			</span>
-       		</div>
-       		
 		       	        
         <div class="submit">
         	<input type="hidden" name="basic_sharer_saving_data" value="true" />
