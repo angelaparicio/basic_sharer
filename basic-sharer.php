@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Basic Sharer
-Description: Plugin muy simple para añadir enlaces de compartir
+Description: Very simple plugin to add share links
 Author: Angel Aparicio
 Author URI: https://angelaparicio.dev
 Version: 0.5
@@ -71,9 +71,7 @@ function basic_sharer_render_options_page(){
 		update_option('basic_sharer_twitter', $basic_sharer_twitter);
 		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
 
-		echo '<div class="updated"><p><strong>';
-		_e('Updated');
-		echo '</strong></p></div>';
+		echo '<div class="updated"><p><strong>'.__('Updated', 'basic_sharer').'</strong></p></div>';
 	
 	}
 	else {

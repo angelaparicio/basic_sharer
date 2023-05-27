@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Basic Sharer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-26 09:32+0000\n"
+"POT-Creation-Date: 2023-05-27 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -24,14 +24,26 @@ msgstr ""
 msgid "Basic Sharer"
 msgstr ""
 
+#: options_page.php:3
+msgid "Basic Sharer Options"
+msgstr ""
+
 #. Author URI of the plugin
 msgid "https://angelaparicio.dev"
 msgstr ""
 
-#. Description of the plugin
-msgid "Plugin muy simple para añadir enlaces de compartir"
-msgstr ""
-
 #: basic-sharer.php:44
 msgid "Share"
+msgstr ""
+
+#: options_page.php:7
+msgid "Social Networks to include"
+msgstr ""
+
+#: basic-sharer.php:74
+msgid "Updated"
+msgstr ""
+
+#. Description of the plugin
+msgid "Very simple plugin to add share links"
 msgstr ""
