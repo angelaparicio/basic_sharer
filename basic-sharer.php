@@ -38,6 +38,11 @@ add_filter( 'the_content', function($content){
 			'logo' => plugin_dir_url(__FILE__).'images/ln-24.png',
 			'visible' => get_option('basic_sharer_linkedin', true)			
 		),
+		'Bluesky' => array(
+			'link' => 'https://bsky.app/intent/compose?text='.$title.' '.$permalink,
+			'logo' => plugin_dir_url(__FILE__).'images/bsky-24.png',
+			'visible' => get_option('basic_sharer_bsky', true)		
+		)
 	);
 	
 	$share_links  = '<div id="sharer_links">';
@@ -45,7 +50,7 @@ add_filter( 'the_content', function($content){
 
 	foreach ( $links as $network_name => $link_info ){
 		if ($link_info['visible']) {
-			$share_links .= '<a href="'.$link_info['link'].'" class="external share_'.strtolower($network_name).'" target="_blank"><img style="display: inline" src="'.$link_info['logo'].'" alt="'.$network_name.'" /></a> ';
+			$share_links .= '<a href="'.$link_info['link'].'" class="external share_'.strtolower($network_name).'" target="_blank"><img style="display: inline" src="'.$link_info['logo'].'" alt="'.$network_name.'" /></a> &nbsp; ';
 		}
 	}	
 	$share_links .= '</div>';
@@ -67,16 +72,20 @@ function basic_sharer_render_options_page(){
 		$basic_sharer_facebook = isset($_POST['basic_sharer_facebook']);
 		$basic_sharer_twitter  = isset($_POST['basic_sharer_twitter']);
 		$basic_sharer_linkedin = isset($_POST['basic_sharer_linkedin']);
+		$basic_sharer_bluesky  = isset($_POST['basic_sharer_bluesky']);
 		
 		update_option('basic_sharer_facebook', $basic_sharer_facebook);
-		update_option('basic_sharer_twitter', $basic_sharer_twitter);
-		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
-	
+		update_option('basic_sharer_twitter',  $basic_sharer_twitter);
+		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);	
+		update_option('basic_sharer_bluesky',  $basic_sharer_bluesky);
+
 	}
 	else {
 		$basic_sharer_facebook = get_option('basic_sharer_facebook', true);
-		$basic_sharer_twitter = get_option('basic_sharer_twitter', true);
+		$basic_sharer_twitter  = get_option('basic_sharer_twitter',  true);
 		$basic_sharer_linkedin = get_option('basic_sharer_linkedin', true);
+		$basic_sharer_bluesky  = get_option('basic_sharer_bluesky',  true);
+
 	}
 	
 	include('options_page.php');
