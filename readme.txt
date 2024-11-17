@@ -19,6 +19,9 @@ The plugin will add links for share on Twitter, Facebook and Linkedin
 == Changelog ==
 
 = 0.5 = 
+Changes for WordPress guidelines
+
+= 0.5 = 
 Added textdomain for translations
 
 = 0.4 =

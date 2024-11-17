@@ -28,9 +28,9 @@ add_filter( 'the_content', function($content){
 			'logo' => plugin_dir_url(__FILE__).'images/fb-24.png',
 			'visible' => get_option('basic_sharer_facebook', true)
 		),	
-		'Twitter' => array(
-			'link' => 'https://twitter.com/share?text='.$title.'&url='.$permalink,
-			'logo' => plugin_dir_url(__FILE__).'images/tw-24.png',
+		'X' => array(
+			'link' => 'https://x.com/share?text='.$title.'&url='.$permalink,
+			'logo' => plugin_dir_url(__FILE__).'images/x-24.png',
 			'visible' => get_option('basic_sharer_twitter', true)			
 		),
 		'Linkedin' => array(

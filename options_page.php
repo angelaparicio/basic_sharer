@@ -15,7 +15,7 @@
       </div>
 
       <div class="inline-edit-col" style="padding-top: 1em;">
-         <label for="basic_sharer_twitter" class="title">Twitter:</label>
+         <label for="basic_sharer_twitter" class="title">X:</label>
          <span class="input-text-wrap">
             <input type="checkbox" id="basic_sharer_twitter" name="basic_sharer_twitter" <?php if ($basic_sharer_twitter) echo 'checked' ?> />
          </span>
