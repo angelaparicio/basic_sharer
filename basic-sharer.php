@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 function basic_sharer_load_plugin_textdomain() {
-	load_plugin_textdomain( 'basic-sharer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'basic_sharer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'basic_sharer_load_plugin_textdomain' ); 
 
@@ -41,12 +41,12 @@ add_filter( 'the_content', function($content){
 		'Bluesky' => array(
 			'link' => 'https://bsky.app/intent/compose?text='.$title.' '.$permalink,
 			'logo' => plugin_dir_url(__FILE__).'images/bsky-24.png',
-			'visible' => get_option('basic_sharer_bsky', true)		
+			'visible' => get_option('basic_sharer_bluesky', true)		
 		)
 	);
 	
 	$share_links  = '<div id="sharer_links">';
-	$share_links .= '<span class="share_links_text">'.__('Share', 'basic-sharer').': </span>';
+	$share_links .= '<span class="share_links_text">'.__('Share', 'basic_sharer').': </span>';
 
 	foreach ( $links as $network_name => $link_info ){
 		if ($link_info['visible']) {
