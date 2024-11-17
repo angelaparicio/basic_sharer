@@ -1,10 +1,10 @@
 <div class="wrap">
 
-   <h2><?php _e( 'Basic Sharer Options', 'basic_sharer'); ?></h2>
+   <h2><?php esc_html_e( 'Basic Sharer Options', 'basic_sharer'); ?></h2>
 
-   <form name="form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" style="padding-top: 1em;">
+   <form name="form" method="post" style="padding-top: 1em;">
 
-      <h3><?php _e( 'Social Networks to include', 'basic_sharer' ) ?></h3>
+      <h3><?php esc_html_e( 'Social Networks to include', 'basic_sharer' ) ?></h3>
 
       <div class="inline-edit-col">
 
@@ -29,6 +29,7 @@
       </div>
 
       <div class="submit">
+         <?php wp_nonce_field( 'basic_share_save', 'basic_share_nonce' ); ?>
          <input type="hidden" name="basic_sharer_saving_data" value="true" />
          <input class="button" type="submit" name="Submit" />
       </div>
