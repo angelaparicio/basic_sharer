@@ -1,10 +1,10 @@
 <div class="wrap">
 
-   <h2><?php _e( 'Basic Sharer Options', 'basic_sharer'); ?></h2>
+   <h2><?php esc_html_e( 'Basic Sharer Options', 'basic-sharer'); ?></h2>
 
-   <form name="form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" style="padding-top: 1em;">
+   <form name="form" method="post" style="padding-top: 1em;">
 
-      <h3><?php _e( 'Social Networks to include', 'basic_sharer' ) ?></h3>
+      <h3><?php esc_html_e( 'Social Networks to include', 'basic-sharer' ) ?></h3>
 
       <div class="inline-edit-col">
 

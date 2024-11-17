@@ -5,14 +5,14 @@ Description: Very simple plugin to add share links
 Author: Angel Aparicio
 Author URI: https://angelaparicio.dev
 Version: 0.5
-Text Domain: basic_sharer
+Text Domain: basic-sharer
 Domain Path: /languages
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 function basic_sharer_load_plugin_textdomain() {
-	load_plugin_textdomain( 'basic_sharer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'basic-sharer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'basic_sharer_load_plugin_textdomain' ); 
 
@@ -41,7 +41,7 @@ add_filter( 'the_content', function($content){
 	);
 	
 	$share_links  = '<div id="sharer_links">';
-	$share_links .= '<span class="share_links_text">'.__('Share', 'basic_sharer').': </span>';
+	$share_links .= '<span class="share_links_text">'.__('Share', 'basic-sharer').': </span>';
 
 	foreach ( $links as $network_name => $link_info ){
 		if ($link_info['visible']) {
@@ -71,7 +71,7 @@ function basic_sharer_render_options_page(){
 		update_option('basic_sharer_twitter', $basic_sharer_twitter);
 		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
 
-		echo '<div class="updated"><p><strong>'.__('Updated', 'basic_sharer').'</strong></p></div>';
+		echo '<div class="updated"><p><strong>'.esc_html_e('Updated', 'basic-sharer').'</strong></p></div>';
 	
 	}
 	else {
