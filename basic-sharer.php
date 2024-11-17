@@ -4,8 +4,8 @@ Plugin Name: Basic Sharer
 Description: Very simple plugin to add share links
 Author: Angel Aparicio
 Author URI: https://angelaparicio.dev
-Version: 0.5
-Text Domain: basic-sharer
+Version: 0.6
+Text Domain: basic_sharer
 Domain Path: /languages
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,9 +60,10 @@ add_action( 'admin_menu', function(){
 });
 
 function basic_sharer_render_options_page(){
-
-	if ( isset($_POST['basic_sharer_saving_data']) ){
 	
+	
+	if ( isset($_POST['basic_share_nonce']) && wp_verify_nonce( sanitize_text_field(wp_unslash($_POST['basic_share_nonce'])), 'basic_share_save' ) ) {
+
 		$basic_sharer_facebook = isset($_POST['basic_sharer_facebook']);
 		$basic_sharer_twitter  = isset($_POST['basic_sharer_twitter']);
 		$basic_sharer_linkedin = isset($_POST['basic_sharer_linkedin']);
@@ -70,8 +71,6 @@ function basic_sharer_render_options_page(){
 		update_option('basic_sharer_facebook', $basic_sharer_facebook);
 		update_option('basic_sharer_twitter', $basic_sharer_twitter);
 		update_option('basic_sharer_linkedin', $basic_sharer_linkedin);
-
-		echo '<div class="updated"><p><strong>'.esc_html_e('Updated', 'basic-sharer').'</strong></p></div>';
 	
 	}
 	else {
