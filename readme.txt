@@ -18,8 +18,10 @@ The plugin will add links for share on Twitter, Facebook and Linkedin
 
 == Changelog ==
 
-= 0.5 = 
+= 0.6 = 
 Changes for WordPress guidelines
+Added bluesky
+Change twitter to X
 
 = 0.5 = 
 Added textdomain for translations
